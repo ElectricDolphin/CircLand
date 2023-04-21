@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+        p {
+            position: absolute;
+            top: -1000px;
+        }
+    </style>
+</head>
+<body>
+
+    <script class="pjs-src" type="data" data-width="600" data-height="600">
+    </script>
+
+    <script>
+        fetch('/main.js')
+            .then(response => response.text())
+            .then((data) => {
+                document.getElementsByClassName("pjs-src")[0].innerHTML = data;
+                let libScript = document.createElement("script");
+                libScript.src = "https://cdn.jsdelivr.net/gh/vExcess/library_files@main/runPJS.js";
+                document.body.appendChild(libScript);
+
+                function positionCanvas() {
+                    let a = document.getElementsByTagName("canvas")
+                    if (a) {
+                        a[0].style = "position: absolute; top: " + (window.innerHeight/2 - 300) + "px; left: " + (window.innerWidth/2 - 300) + "px;"
+                        window.addEventListener("load", function() {
+                            document.getElementById("loading").textContent = ""
+                        })
+                        window.clearInterval(checkCnv);
+                    }
+                }
+
+                let checkCnv = window.setInterval(positionCanvas, 10);
+
+                window.addEventListener("resize", positionCanvas);
+        })
+    </script>
+
+    <p>Just a bit of offscreen text so that Google Translate doesn't come up for some reason trying to translate the page from Hawaiian</p>
+</body>
+</html>
