@@ -256,12 +256,12 @@ var levelInfo = [
 	}, 
 	{
 		end: 5400,
-		bg: color(255, 0, 0),
+		bg: color(200, 0, 0),
 		name: "The end?",
 	},
 	{
 		end: 5900,
-		bg: color(255, 0, 0),
+		bg: color(200, 0, 0),
 		name: "Getting over it",
 	},
 	{
@@ -1712,7 +1712,7 @@ draw = function() {
 	}
 	if (scene === "game") {
 		if (bossX === 0) {
-			background(lerpColor(color(255), color(255, 0, 0), constrain((pX - 5650)/3, 0, 255)/255));
+			background(lerpColor(color(255), color(200, 0, 0), constrain((pX - 5650)/3, 0, 255)/255));
 		} else {
 			background(levelInfo[bossX].bg);
 		}
