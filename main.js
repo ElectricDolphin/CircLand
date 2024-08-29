@@ -256,12 +256,12 @@ var levelInfo = [
 	}, 
 	{
 		end: 5400,
-		bg: color(200, 0, 0),
+		bg: color(255, 0, 0),
 		name: "The end?",
 	},
 	{
 		end: 5900,
-		bg: color(200, 0, 0),
+		bg: color(255, 0, 0),
 		name: "Getting over it",
 	},
 	{
@@ -1177,13 +1177,10 @@ var secretDialogue = [
 		"I have found a way to project myself to other universes, but only for a short amount of time.",
 		"The only way to escape my universe is by gathering universe cores.",],
 		["Once I have enough, I will escape...",
-		"And then I'll take over KA!",],
-        ["\"What's KA? Why are you taking it over?\"",
-        "The circle must be confused, but I'm sure you aren't.",
-        "Yes, you. Person that's controlling the circle."
-        ],
+		"And then I'll take over your \"real world\"!",],
         ["With both CircLand and the Rectangle Kingdom gone, it should've been easy to destroy this universe.",
         "But then you decided to get in my way."],
+        [],
         [],
 		["Wow, you're quite persistant, aren't you?",
 		"Here's some circles. Have a nice break.",
@@ -1712,7 +1709,7 @@ draw = function() {
 	}
 	if (scene === "game") {
 		if (bossX === 0) {
-			background(lerpColor(color(255), color(200, 0, 0), constrain((pX - 5650)/3, 0, 255)/255));
+			background(lerpColor(color(255), color(255, 0, 0), constrain((pX - 5650)/3, 0, 255)/255));
 		} else {
 			background(levelInfo[bossX].bg);
 		}
