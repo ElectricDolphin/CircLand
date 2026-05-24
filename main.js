@@ -1416,6 +1416,61 @@ keyPressed = function() {
         }
         println("var saveCode = [\"" + saveCodes[bossX] + "\"" + tmpStr + ", " + secretDead + "];");
     }
+	if (keys[32] && keys[16] && keys[76]) {
+		try {
+			var saveCodeString = prompt("Enter your save code");
+			keys[32] = keys[16] = keys[76] = false;
+			if (saveCodeString) {	
+				var openingIndex = saveCodeString.indexOf("[");
+				var closingIndex = saveCodeString.indexOf("];") + 1;
+				var saveCodeObjectStr = ("{\"arr\": " + saveCodeString.substring(openingIndex, closingIndex) + "}").replaceAll(",]", "]");
+				saveCode = JSON.parse(saveCodeObjectStr).arr;
+				scene = "menu";
+				for (var i = 0; i < saveCodes.length; i ++) {
+					if (saveCode[0] === saveCodes[i]) {
+						bossX = i;
+						pX = 200;
+						pY = 200;
+						xVel = 0;
+						yVel = 0;
+						introTime = 500;
+						circles = [];
+						rects = [];
+						lRects = [];
+						for (var i in circArray[bossX]) {
+							var circ = circArray[bossX][i];
+							circles.push(new circle(circ[0], circ[1], circ[2], circ[3], circ[4]));
+						}
+						
+						for (var i in rectArray[bossX]) {
+							var rec = rectArray[bossX][i];
+							rects.push(new rectangle(rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]));
+						}
+						
+						for (var i in lRectArray[bossX]) {
+							var rec = lRectArray[bossX][i];
+							lRects.push(new lRect(rec[0], rec[1], rec[2], rec[3], rec[4], rec[5], rec[6], rec[7], rec[8]));
+						}
+						fireballs = [];
+						particles = [];
+						cutsceneVar = 0;
+						cutscene = 0;
+						cutsceneX = 0;
+						cutsceneY = 0;
+					}
+				}
+				if (saveCode) {
+					var a = 1;
+					for (var i in character) {
+						character[i] = saveCode[a];
+						a ++;
+					}
+				}
+			}
+		} catch (e) {
+			println(e)
+		}
+	}
     if (keyCode === 73) {
         easy = true;
         secretDialogue = easyDialogue;
