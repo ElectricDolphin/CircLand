@@ -1437,18 +1437,18 @@ keyPressed = function() {
 						circles = [];
 						rects = [];
 						lRects = [];
-						for (var i in circArray[bossX]) {
-							var circ = circArray[bossX][i];
+						for (var j in circArray[bossX]) {
+							var circ = circArray[bossX][j];
 							circles.push(new circle(circ[0], circ[1], circ[2], circ[3], circ[4]));
 						}
 						
-						for (var i in rectArray[bossX]) {
-							var rec = rectArray[bossX][i];
+						for (var j in rectArray[bossX]) {
+							var rec = rectArray[bossX][j];
 							rects.push(new rectangle(rec[0], rec[1], rec[2], rec[3], rec[4], rec[5]));
 						}
 						
-						for (var i in lRectArray[bossX]) {
-							var rec = lRectArray[bossX][i];
+						for (var j in lRectArray[bossX]) {
+							var rec = lRectArray[bossX][j];
 							lRects.push(new lRect(rec[0], rec[1], rec[2], rec[3], rec[4], rec[5], rec[6], rec[7], rec[8]));
 						}
 						fireballs = [];
